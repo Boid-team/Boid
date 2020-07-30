@@ -8,9 +8,10 @@ double weightedaverage(int array[], int n){
 
 	double wtAvg = 0;
 
+	//sum averages
 	for(int i = 0; i < n; i++){
 		count = 1;
-		for(int j = 0; j < n; j++){
+		for(int j = 0; j < n; j++){//count how many times a number appears in the array
 			if(array[i] == array[j] && i != j){
 				count++;
 			}
