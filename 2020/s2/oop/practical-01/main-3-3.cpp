@@ -8,5 +8,5 @@ int main(){
 	int array2[] = {1,1,1,1,1,1};
 	int array3[] = {};
 
-	cout << "The weighted average of the array is: " << weightedaverage(array1, 6) << endl;
+	cout << "The weighted average of the array is: " << weightedaverage(array2, 6) << endl;
 }

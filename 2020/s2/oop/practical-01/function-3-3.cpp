@@ -1,3 +1,5 @@
+#include <iostream>
+
 double weightedaverage(int array[], int n){
 
 	if(n < 1){
@@ -18,7 +20,7 @@ double weightedaverage(int array[], int n){
 		}
 
 		wtAvg += static_cast<double>((array[i]) * count) / static_cast<double>(n);
-
+		std::cout <<wtAvg << std::endl;
 	}
 
 	return wtAvg;
