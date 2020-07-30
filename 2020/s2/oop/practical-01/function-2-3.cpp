@@ -5,7 +5,7 @@ using std::endl;
 void twofivenine(int array[], int n){
 
 	if(n < 1){
-		cout << "2:0;5:0;9:0" << endl;
+		cout << "2:0;5:0;9:0;" << endl;
 	}else{
 
 		int twos = 0;
@@ -25,6 +25,6 @@ void twofivenine(int array[], int n){
 			}
 		}
 
-		cout << "2:" << twos << ";5:" << fives << ";9:" << nines << endl;
+		cout << "2:" << twos << ";5:" << fives << ";9:" << nines << ";" << endl;
 	}
 }

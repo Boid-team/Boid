@@ -4,7 +4,7 @@ using namespace std;
 extern double weightedaverage(int[], int);
 
 int main(){
-	int array1[] = {1,2,1,4,1,3};	
+	int array1[] = {1,2,1,4,3,6};	
 	int array2[] = {1,1,1,1,1,1};
 	int array3[] = {};
 

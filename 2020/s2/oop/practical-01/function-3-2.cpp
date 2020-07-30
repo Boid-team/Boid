@@ -9,7 +9,7 @@ int median(int array[], int n){
 
 	int tempNum;
 
-	for(int i = 0; i < n; i++){
+	for(int i = 0; i < n; i++){//copy array to working array
 
 		sorted[i] = array[i];
 
