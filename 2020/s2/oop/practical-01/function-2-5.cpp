@@ -1,4 +1,4 @@
-bool decending(int array[], int n){
+bool descending(int array[], int n){
 	if(n < 1){
 		return false;
 	}
