@@ -1,26 +1,23 @@
+#include <iostream>
+
 bool fanarray(int array[], int n){
 	
-	bool isFan = true;
+	bool isFan = false;
+	int count = 0;
 
-	if(n<1){
-		isFan = false;
-	}
 
-	if(n % 2 == 0){//if number of elements is even
+	if(!(n<1)){
 
-		for(int i = 0; i < n/2;i++){
-			if(array[i] != array[n-1-i]){
-				isFan = false;
-			}
-
-	}	
-
-	}else{//if number of elements is odd
-		for(int i = 0; i < (n-1) / 2; i++){
-			if(array[i] != array[n-1-i]){
-				isFan = false;
+		for(int i = 0; i < n / 2; i++){
+			if(array[i] == array[n-1-i]){
+				count++;
 			}
 		}
+
+		if(count == n/2){
+			isFan = true;
+		}
+
 	}
 
 	return isFan;
