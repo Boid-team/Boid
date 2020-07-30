@@ -10,7 +10,7 @@ int main(){
 
 	cout << "Array is in decending order: ";
 
-	if(decending(array1,10) == true){
+	if(descending(array1,10) == true){
 		cout << "True" << endl;
 	}else{
 		cout << "False"<< endl;
