@@ -19,8 +19,8 @@ double weightedaverage(int array[], int n){
 			}
 		}
 
-		wtAvg += static_cast<double>((array[i]) * count) / static_cast<double>(n);
-		std::cout <<wtAvg << std::endl;
+		wtAvg += array[i] * (count / (double)n);
+
 	}
 
 	return wtAvg;
