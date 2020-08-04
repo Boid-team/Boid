@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 
-int main(){
+int transform(int n){
 
-	int I = 2;
+	int I = n;
+	int num = 0;
 
 	std::vector<int> vec;
 
@@ -12,11 +14,10 @@ int main(){
 		I = I/2;
 	}
 
-	for(int i = vec.size()-1; i >= 0; i--){
-		std::cout << vec[i];
-	}
-	
-	std::cout << std::endl;
 
-	return 0;
+	for(int i = 0; i < vec.size(); i++){
+		num += vec[i] * pow(10,vec.size() -1 - i);
+	}
+
+	return num;
 }
