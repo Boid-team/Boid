@@ -5,7 +5,7 @@ int main(){
 
 	int I = 2;
 
-	std::vector<int> vec = {};
+	std::vector<int> vec;
 
 	while(I != 0){
 		vec.push_back(I % 2);
