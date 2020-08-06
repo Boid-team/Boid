@@ -15,9 +15,6 @@ void count_numbers(int array[4][4]){
 	for(int i = 0; i < 4; i++){
 		for(int j = 0; j < 4; j++){//iterate over each element
 
-			cout << array[i][j] << " ";
-
-			
 			int working = array[i][j];
 
 			if(working == 0){
@@ -40,7 +37,6 @@ void count_numbers(int array[4][4]){
 		
 
 		}//end loop
-		cout << endl;
 	}
 
 	for(int i = 0; i < 10; i++){//print numbers to console
