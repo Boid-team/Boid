@@ -1,5 +1,9 @@
 bool is_a_palindrome(int integers[], int length){
 
+	if(length == 0 || length < 0){
+		return -1;
+	}
+
 	bool isPal = false;
 	int n = length;
 	int count = 0;
@@ -18,6 +22,10 @@ bool is_a_palindrome(int integers[], int length){
 }
 
 int sum_elements(int integers[], int length){
+
+	if(length == 0 || length < 0){
+		return -1;
+	}
 	
 	int sum = 0;
 
