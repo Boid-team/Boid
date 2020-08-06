@@ -18,7 +18,13 @@ void count_numbers(int array[4][4]){
 			
 			int working = array[i][j];
 
+			if(working == 0){
+				numbers[0]++;
+			}
+
 			while(working != 0){//check each digit of input num
+
+
 				for(int k = 0; k < 10; k++){//
 					if(working % 10 == k){
 						numbers[k]++;
@@ -41,8 +47,4 @@ void count_numbers(int array[4][4]){
 	cout << endl;
 
 
-}
-
-int digits(int n){
-	return floor(log10(n) + 1);//get digits for argument num
 }
