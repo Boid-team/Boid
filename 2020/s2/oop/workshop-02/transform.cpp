@@ -15,7 +15,7 @@ int transform(int n){
 	}
 
 
-	for(int i = 0; i < vec.size(); i++){
+	for(int i = vec.size() - 1; i >= 0; i--){
 		num += vec[i] * pow(10,vec.size() -1 - i);
 	}
 

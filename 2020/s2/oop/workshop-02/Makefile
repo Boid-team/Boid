@@ -1,2 +1,3 @@
-mymake: transform.cpp
-	g++ -o transform transform.cpp
+mymake: transform.cpp main.cpp
+	clang++  transform.cpp main.cpp -o transform
+
