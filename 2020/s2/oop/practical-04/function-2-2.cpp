@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-vector<vector<int>> vec;
+vector< vector< int > > vec;
 
 vector<int> working;
 
