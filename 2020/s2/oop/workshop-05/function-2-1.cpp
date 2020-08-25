@@ -7,9 +7,7 @@ int *readNumbers(){
 	int n;
 
 	for(int i = 0; i < 10; i++){
-		cout << "Enter number: ";
 		cin >> n;
-		cout << endl;
 		nums[i] = n;
 	}
 	int *ptr = &nums[0];
