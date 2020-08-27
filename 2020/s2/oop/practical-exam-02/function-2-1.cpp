@@ -28,6 +28,6 @@ void bmiIndex(int weight){
 		case 24: cout << "Healthy weight!"<< endl; break;
 		case 29: cout << "That's overweight."<< endl; break;
 		case 39: cout << "Looks like obese"<< endl; break;
-		default: cout << "Hmm, is this correct?"<< endl; break;
+		default: cout << "Hmmm, is this correct?"<< endl; break;
 	}
 }
