@@ -25,7 +25,17 @@ void displayArray(int *numbers, int length){
 void printSubArrays(int *numbers, int length){
 	for(int i = 0; i < length; i++){
 		for(int j = i; j < length; j++){
-			cout << "{" << *(numbers + j) << "}";
+
+			cout << "{";
+
+			for(int k = i; k < j + 1; k++){
+				cout << *(numbers + k);
+				if(k != j){
+					cout << ",";
+				}
+			}
+
+			cout << "}";
 			if(j != length - 1){
 				cout << ",";
 			}
@@ -36,17 +46,8 @@ void printSubArrays(int *numbers, int length){
 }
 
 /*
-i = 0:
-0    1      2
-{0}, {0,1},{0,1,2}
-
-i = 1:
-1    2
-{1},{1,2}
-
-i = 2:
-2
-{2}
+this is basically just me flailing around throwing code on the wall and seeing what sticks
+but it worked eventually so i'm not complaining
 */
 
 
