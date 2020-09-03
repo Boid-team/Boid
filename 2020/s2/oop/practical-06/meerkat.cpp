@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "meerkat.h"
 using namespace std;
 
@@ -24,5 +25,5 @@ int meerkat::getAge(){
 }
 
 meerkat::~meerkat(){
-	
+
 }
