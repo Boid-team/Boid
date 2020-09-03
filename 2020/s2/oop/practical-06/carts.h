@@ -27,12 +27,15 @@ using namespace std;
 
 class cart{
 	int capacity;
-	vector<meerkat> meerkats;
+	// vector<meerkat> meerkats {};
+	meerkat passengers[4];
+	static int count;
 public:
 	cart();
 	bool addMeerkat(meerkat);
 	void emptyCart();
 	void printMeerkats();
+	int getCount();
 
 };
 
