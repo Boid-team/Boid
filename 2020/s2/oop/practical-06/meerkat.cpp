@@ -3,7 +3,7 @@
 using namespace std;
 
 meerkat::meerkat(){
-	name = "Default name"
+	name = "Default name";
 	age = 0;
 }
 
@@ -11,7 +11,7 @@ void meerkat::setName(string meerName){
 	name = meerName;
 }
 
-string meerkat:getName(){
+string meerkat::getName(){
 	return name;
 }
 
@@ -21,4 +21,8 @@ void meerkat::setAge(int meerAge){
 
 int meerkat::getAge(){
 	return age;
+}
+
+meerkat::~meerkat(){
+	
 }
