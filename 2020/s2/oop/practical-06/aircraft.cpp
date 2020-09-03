@@ -1,36 +1,11 @@
 #include <string>
 #include <iostream>
 #include "aircraft.h"
+#include "person.h"
 using namespace std;
 
-person::person(){
-	name = "default name";
-	salary = 0;
-}
-
-person::person(string myName, int newSalary){
-	name = myName;
-	salary = newSalary;
-}
-
-void person::setName(string myName){
-	name = myName;
-}
-
-string person::getName(){
-	return name;
-}
-
-void person::setSalary(int newSalary){
-	salary = newSalary;
-}
-
-int person::getSalary(){
-	return salary;
-}
-
 aircraft::aircraft(){
-	
+
 }
 
 aircraft::aircraft(string theCallsign, person thePilot, person theCoPilot){
