@@ -1,9 +1,11 @@
 extern int *readNumbers();
 extern void printNumbers(int*, int);
+extern void hexDigits(int*, int);
 
 int main(){
 	int *array = readNumbers();
-	printNumbers(array, 10);
+
+	hexDigits(array, 10);
 
 	delete[] array;
 }
