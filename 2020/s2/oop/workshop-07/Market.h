@@ -9,7 +9,7 @@ class Market{
 	int age;
 public:
 	Market();
-	void setname(string);
+	void setName(string);
 	string getName();
 	void setAge(int);
 	int getAge();
