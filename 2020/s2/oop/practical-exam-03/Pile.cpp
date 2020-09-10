@@ -19,7 +19,7 @@ Pile::Pile(int weight){
 }
 
 int Pile::get_weight(){
-	return curr_weight;
+	return max_weight;
 }
 
 int Pile::get_number_of_Packagees(){
