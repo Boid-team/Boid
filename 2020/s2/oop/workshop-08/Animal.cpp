@@ -3,6 +3,7 @@
 using namespace std;
 
 Animal::Animal(string aSpecies){
+	name = "Default name";
 	species = aSpecies;
 	currentID++;
 	id = currentID;
