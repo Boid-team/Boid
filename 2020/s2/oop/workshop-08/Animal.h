@@ -5,6 +5,8 @@
 using namespace std;
 
 class Animal{
+
+protected:
 	string name;
 	string species;
 	int id;
