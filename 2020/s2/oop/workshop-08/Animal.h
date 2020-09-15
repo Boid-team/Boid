@@ -5,13 +5,14 @@
 using namespace std;
 
 class Animal{
+	static int currentID;
 
 protected:
 	string name;
 	string species;
 	int id;
 
-	static int currentID;
+	
 public:
 	Animal(string);
 	void set_name(string);

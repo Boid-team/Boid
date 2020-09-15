@@ -16,6 +16,8 @@ int main(){
 	for(int i = 0; i < Cheetah.numberOfKills(); i++){
 		cout << Cheetah.get_kills()[i] << endl;
 	}
+	Cheetah.set_name("Joe");
+	cout << Cheetah.get_name() << endl;
 
 	return 0;
 }
