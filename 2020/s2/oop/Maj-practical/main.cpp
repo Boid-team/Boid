@@ -1,21 +1,31 @@
 #include <ncurses.h>
 #include "Object.h"
-using namespace std;
+
 int main(){
 
-	cout << "enter type of boid: " << endl;
-	cin >> type;
+	// cout << "enter type of boid: " << endl;
+	// cin >> type;
 
-	if(type == "bird"){
-		for(int i = 0; i < 10; i++){
-			Boid array = new Boid();
-		}
-	}else if(type == "fish"){
-		for(int i = 0; i < 10; i++){
-			Boid array = new Boid();
-		}
-	}
+	// if(type == "bird"){
+	// 	for(int i = 0; i < 10; i++){
+	// 		Boid array = new Boid();
+	// 	}
+	// }else if(type == "fish"){
+	// 	for(int i = 0; i < 10; i++){
+	// 		Boid array = new Boid();
+	// 	}
+	// }
+
+	Object boid = Object();
+	boid.setDx(1);
+	boid.setDy(2);
+	boid.setX(5);
+	boid.setY(5);
+	boid.setDirection();
+
+
 	initscr();
+	halfdelay(1);
 	// while(running == true){
 
 	// 	for(int i =0; i < 10; i++){
@@ -36,8 +46,13 @@ int main(){
 			break;
 		}else{
 
+			boid.updatePos();
+			boid.setDirection();
+
+			mvaddch(boid.getY(), boid.getX(), boid.getDirection());
 			
 			
+
 			ch = getch();
 			clear();
 		}
