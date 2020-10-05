@@ -24,8 +24,7 @@ int main(){
 	boid.setDirection();
 
 
-	initscr();
-	halfdelay(1);
+	i
 	// while(running == true){
 
 	// 	for(int i =0; i < 10; i++){
