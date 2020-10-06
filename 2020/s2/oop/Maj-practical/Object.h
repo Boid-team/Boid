@@ -4,7 +4,7 @@
 
 class Object{
 protected:
-	int x, y ,dx, dy;
+	float x, y ,dx, dy;
 
 	float maxSpeed;
 
@@ -14,10 +14,10 @@ public:
 	Object();
 
 	float getCurrSpeed();
-	int getX();
-	int getY();
-	int getDx();
-	int getDy();
+	float getX();
+	float getY();
+	float getDx();
+	float getDy();
 	char getDirection();
 
 	void setX(int);

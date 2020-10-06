@@ -8,7 +8,7 @@ Object.o: Object.h Object.cpp
 	clang++ -c Object.h Object.cpp
 
 Object.test: Object.o testingObject.cpp
-	clang++ Object.o testingObject.cpp -o "test"
+	clang++ Object.o testingObject.cpp -lncurses -o "test"
 	./test
 
 

@@ -1,9 +1,11 @@
 #include <iostream>
 #include "Object.h"
+#include <cmath>
+#include <ncurses.h>
 using namespace std;
 
 int main(){
-	Object thing = Object();
+	Object boid = Object();
 
 	boid.setDx(1);
 	boid.setDy(2);
@@ -13,6 +15,7 @@ int main(){
 
 	// cout << "thing has X Pos: " << thing.getX() << ", Y pos: " << thing.getY() << ", dx: " << thing.getDx() << ", dy: " << thing.getDy() << endl;
 	int i = 0;
+	char ch;
 	initscr();
 	halfdelay(1);
 	while(1){
@@ -20,13 +23,16 @@ int main(){
 			break;
 		}else{
 			i++;
-
+			mvprintw(1,1,"%d",i);
 			
-			boid.setDy()
+			boid.setDy(sin(i));
+			boid.setDx(cos(i));
+			boid.setDirection();
 
-
+			mvaddch(boid.getY(),boid.getX(),boid.getDirection());
+			refresh();
 			ch = getch();
-			clear();
+			
 		}
 	}
 

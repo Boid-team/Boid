@@ -19,19 +19,19 @@ float Object::getCurrSpeed(){
 		return sqrt(pow(dx,2) + pow(dy,2));
 }
 
-int Object::getX(){
+float Object::getX(){
 	return x;
 }
 
-int Object::getY(){
+float Object::getY(){
 	return y;
 }
 
-int Object::getDx(){
+float Object::getDx(){
 	return dx;
 }
 
-int Object::getDy(){
+float Object::getDy(){
 	return dy;
 }
 
@@ -56,7 +56,7 @@ void Object::setDy(int inDy){
 }
 
 void Object::setDirection(){
-		if(x != 0){
+		if(dx != 0){
 
 			if(atan(dy/dx) * 180 / PI >= 45 | atan(dy/dx) * 180 / PI < 135){
 				direction = 'v';
@@ -68,7 +68,7 @@ void Object::setDirection(){
 				direction = '<';
 			}
 		}else{
-			if(y < 0){
+			if(dy < 0){
 				direction = '^';
 			}else if(y > 0){
 				direction = 'v';
