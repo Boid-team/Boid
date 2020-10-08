@@ -14,8 +14,8 @@ Object.test: Object.o testingObject.cpp
 Fish.o: Object.cpp Fish.cpp
 	clang++ -c Object.cpp Fish.cpp
 
-Fish.test:
-	clang++ Fish.o FishTest.cpp
+Fish.test: 
+	clang++ Object.o Fish.o FishTest.cpp
 
 Bird.o: Object.cpp Bird.cpp
 	clang++ -c Object.cpp Bird.cpp

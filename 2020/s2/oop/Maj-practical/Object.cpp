@@ -7,10 +7,7 @@
 using namespace std;
 
 Object::Object(){
-		x = rand() % 24;
-		y = rand() % 24;
-		dx = rand() % 5;
-		dy = rand() % 5;
+
 }
 
 //GETTERS
@@ -78,9 +75,9 @@ void Object::setDirection(){
 		}
 }
 
-void Object::checkIfSpeeding(){
+// void Object::checkIfSpeeding(){
 		
-}
+// }
 
 void Object::updatePos(){
 		x = x + dx;
