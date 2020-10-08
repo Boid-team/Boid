@@ -79,10 +79,7 @@ void Object::setDirection(){
 }
 
 void Object::checkIfSpeeding(){
-		if(getCurrSpeed() > maxSpeed){
-			dx = (dx / getCurrSpeed()) * maxSpeed;
-			dy = (dy / getCurrSpeed()) * maxSpeed;
-		}
+		
 }
 
 void Object::updatePos(){
@@ -91,5 +88,7 @@ void Object::updatePos(){
 }
 
 
-
+Object::~Object(){
+	
+}
 

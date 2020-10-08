@@ -15,29 +15,18 @@ int main(){
 	// 		Boid array = new Boid();
 	// 	}
 	// }
+	Object *array[flockNum];
+	for(int i = 0; i < flockNum; i++){
+		*array[i] = new Object();
+	}
 
 	Object boid = Object();
-	boid.setDx(1);
-	boid.setDy(0);
-	boid.setX(5);
-	boid.setY(10);
+	// boid.setDx(1);
+	// boid.setDy(0);
+	// boid.setX(5);
+	// boid.setY(10);
 	boid.setDirection();
 
-
-	
-	// while(running == true){
-
-	// 	for(int i =0; i < 10; i++){
-
-	// 		array[i].checkEdges();
-	// 		array[i].checkCoherence();
-	// 		array[i].checkSeparation();
-	// 		array[i].checkAlignment();
-
-	// 		array[i].updatePos();
-	// 		draw(array[i].gety, array[i]. getx);
-	// 	}
-	// }
 	char ch;
 	int i = 0;
 	initscr();
@@ -47,13 +36,13 @@ int main(){
 			break;
 		}else{
 
-			boid.updatePos();
-			boid.setDirection();
+			for(int i = 0; i < flockNum; i++){
+				updateDirection(*Object);
+				array[i] -> updatePos();
+				mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
+			}
 
-			mvaddch(boid.getY(), boid.getX(), boid.getDirection());
-			
-			
-
+	
 			ch = getch();
 			clear();
 		}
@@ -62,4 +51,13 @@ int main(){
 
 	endwin();
 	return 0;
+}
+
+void updateDirection(Object){
+	
+	stayWithinBounds(Object);
+	flyTowardsCentre(Object);
+	avoidOthers(Object);
+	matchVelocity(Object);
+
 }

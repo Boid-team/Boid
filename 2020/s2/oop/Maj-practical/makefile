@@ -11,4 +11,14 @@ Object.test: Object.o testingObject.cpp
 	clang++ Object.o testingObject.cpp -lncurses -o "test"
 	./test
 
+Fish.o: Object.cpp Fish.cpp
+	clang++ -c Object.cpp Fish.cpp
 
+Fish.test:
+	clang++ Fish.o FishTest.cpp
+
+Bird.o: Object.cpp Bird.cpp
+	clang++ -c Object.cpp Bird.cpp
+
+Bird.test:
+	clang++ Bird.o BirdTest.cpp

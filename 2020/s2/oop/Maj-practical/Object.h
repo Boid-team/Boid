@@ -27,12 +27,14 @@ public:
 
 	void setDirection();
 
-	void checkIfSpeeding();
+	virtual void checkIfSpeeding() = 0;
 
+	// float distance(*Object);
 	
 
 	void updatePos();
 
+	virtual ~Object();
 };
 
 #endif
