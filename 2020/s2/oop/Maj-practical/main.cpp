@@ -18,13 +18,13 @@ int main(){
 
 	Object boid = Object();
 	boid.setDx(1);
-	boid.setDy(2);
+	boid.setDy(0);
 	boid.setX(5);
-	boid.setY(5);
+	boid.setY(10);
 	boid.setDirection();
 
 
-	i
+	
 	// while(running == true){
 
 	// 	for(int i =0; i < 10; i++){
@@ -40,6 +40,8 @@ int main(){
 	// }
 	char ch;
 	int i = 0;
+	initscr();
+	halfdelay(1);
 	while(1){
 		if(ch == 'q' | ch == 'Q'){
 			break;

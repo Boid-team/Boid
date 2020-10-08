@@ -70,9 +70,9 @@ void Object::setDirection(){
 		}else{
 			if(dy < 0){
 				direction = '^';
-			}else if(y > 0){
+			}else if(dy > 0){
 				direction = 'v';
-			}else if(y == 0){
+			}else if(dy == 0){
 				direction = '.';
 			}
 		}
