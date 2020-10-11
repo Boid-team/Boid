@@ -7,7 +7,10 @@
 using namespace std;
 
 Object::Object(){
-
+	x = rand() % 24;
+	y = rand() % 24;
+	dx = rand() % 5;
+	dy = rand() % 5;
 }
 
 //GETTERS
@@ -36,19 +39,19 @@ char Object::getDirection(){
 	return direction;
 }
 
-void Object::setX(int inX){
+void Object::setX(float inX){
 	x = inX;
 }
 
-void Object::setY(int inY){
+void Object::setY(float inY){
 	y = inY;
 }
 
-void Object::setDx(int inDx){
+void Object::setDx(float inDx){
 	dx = inDx;
 }
 
-void Object::setDy(int inDy){
+void Object::setDy(float inDy){
 	dy = inDy;
 }
 

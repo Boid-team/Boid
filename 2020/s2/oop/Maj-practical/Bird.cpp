@@ -2,7 +2,7 @@
 #include "Bird.h"
 
 Bird::Bird():Object() {
-
+	
 }
 
 void Bird::checkIfSpeeding(){

@@ -8,7 +8,7 @@ class Fish: public Object
 protected:
 	float maxSpeedX, maxSpeedY;
 public:
-	Fish();
+	Fish(int maxY, int maxX);
 
 	float getMaxSpeedX();
 	float getMaxSpeedY();

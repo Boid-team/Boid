@@ -20,10 +20,10 @@ public:
 	float getDy();
 	char getDirection();
 
-	void setX(int);
-	void setY(int);
-	void setDx(int);
-	void setDy(int);
+	void setX(float);
+	void setY(float);
+	void setDx(float);
+	void setDy(float);
 
 	void setDirection();
 

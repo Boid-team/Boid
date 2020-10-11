@@ -17,10 +17,12 @@ int main(){
 	// }
 	Object *array[flockNum];
 	for(int i = 0; i < flockNum; i++){
-		*array[i] = new Object();
+		array[i] = new Bird();
+		array[i].setDx(0);
+		array[i].setDy(0);
 	}
 
-	Object boid = Object();
+	// Object boid = Object();
 	// boid.setDx(1);
 	// boid.setDy(0);
 	// boid.setX(5);
@@ -37,7 +39,7 @@ int main(){
 		}else{
 
 			for(int i = 0; i < flockNum; i++){
-				updateDirection(*Object);
+				updateDirection(array[i]);
 				array[i] -> updatePos();
 				mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
 			}
@@ -53,11 +55,11 @@ int main(){
 	return 0;
 }
 
-void updateDirection(Object){
+// void updateDirection(Object){
 	
-	stayWithinBounds(Object);
-	flyTowardsCentre(Object);
-	avoidOthers(Object);
-	matchVelocity(Object);
+// 	stayWithinBounds(Object);
+// 	steerTowardsCentre(Object);
+// 	avoidOthers(Object);
+// 	matchVelocity(Object);
 
-}
+// }

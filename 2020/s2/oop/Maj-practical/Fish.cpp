@@ -1,9 +1,9 @@
 #include "Object.h"
 #include "Fish.h"
 
-Fish::Fish():Object(){
-	maxSpeedX = 4;
-	maxSpeedY = 2;
+Fish::Fish(int maxY, int maxX):Object(){
+	maxSpeedX = maxX;
+	maxSpeedY = maxY;
 		// x = rand() % 24;
 		// y = rand() % 24;
 		// dx = rand() % 5;
