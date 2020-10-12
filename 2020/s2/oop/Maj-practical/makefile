@@ -2,7 +2,7 @@ make:
 
 main: Object.o main.cpp
 	clang++ Object.o main.cpp -lncurses -o "main"
-	
+
 main.test:
 	./main
 
@@ -11,14 +11,14 @@ Object.o: Object.h Object.cpp
 
 Object: Object.o testingObject.cpp
 	clang++ Object.o testingObject.cpp -lncurses -o "Objtest"
-	
+
 Object.test:
 	./Objtest
 
 Fish.o: Object.cpp Fish.cpp
 	clang++ -c Object.cpp Fish.cpp
 
-Fish: 
+Fish:
 	clang++ Object.o Fish.o FishTest.cpp -lncurses -o "FishTest"
 
 Fish.test:
@@ -37,4 +37,5 @@ Functions:
 	clang++ Object.o Bird.o FunctionTest.cpp -lncurses -o "FunctionTest"
 
 Functions.test:
+	rm -f
 	./FunctionTest

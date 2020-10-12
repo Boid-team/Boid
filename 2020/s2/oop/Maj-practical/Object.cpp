@@ -11,7 +11,11 @@ Object::Object(){
 	y = rand() % 24;
 	dx = rand() % 5;
 	dy = rand() % 5;
+
+	objID = id++;
 }
+
+int Object::id = 0;
 
 //GETTERS
 
@@ -37,6 +41,10 @@ float Object::getDy(){
 
 char Object::getDirection(){
 	return direction;
+}
+
+int Object::getID(){
+	return objID;
 }
 
 void Object::setX(float inX){
@@ -78,9 +86,9 @@ void Object::setDirection(){
 		}
 }
 
-// void Object::checkIfSpeeding(){
-		
-// }
+void Object::checkIfSpeeding(){
+
+}
 
 void Object::updatePos(){
 		x = x + dx;
@@ -89,6 +97,6 @@ void Object::updatePos(){
 
 
 Object::~Object(){
-	
+
 }
 

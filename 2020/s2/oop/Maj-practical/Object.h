@@ -10,6 +10,8 @@ protected:
 
 	char direction;
 
+	static int id;
+	int objID;
 public:
 	Object();
 
@@ -19,6 +21,7 @@ public:
 	float getDx();
 	float getDy();
 	char getDirection();
+	int getID();
 
 	void setX(float);
 	void setY(float);
@@ -30,7 +33,7 @@ public:
 	virtual void checkIfSpeeding() = 0;
 
 	// float distance(*Object);
-	
+
 
 	void updatePos();
 

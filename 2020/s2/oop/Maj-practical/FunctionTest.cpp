@@ -3,38 +3,35 @@
 #include "Bird.h"
 #include "Functions.cpp"
 
-// WINDOW *create_newwin(int height, int width, int startY, int startX);
 
 int main(){
 
-	int n = 5;
+	int n = 15;
 
 	Object *array = new Bird[n];
 
 	for(int i = 0; i < n; i++){
+		// array[i].setX(i*5);
+		// array[i].setY(i*2);
 		array[i].setDy(1.5);
-		array[i].setDx(1.5);
+		array[i].setDx(3);
 	}
-
-	// WINDOW *win;
 
 	char ch;
 	int i = 0;
+
 	initscr();
-	halfdelay(2);
-	// cout << "Still working!" << endl;
+	halfdelay(2 );
 
 	int height = 30;
 	int width = 100;
-	int startX = (COLS-width)/2;
-	int startY = (LINES - height)/2;
 
-	// win = create_newwin(height,width,startY,startX);
 
 	while(1){
 		if(ch == 'q' | ch == 'Q'){
 			break;
 		}else{
+
 		clear();
 		move(0,0);
 		hline('-',width);
@@ -44,16 +41,26 @@ int main(){
 		hline('-',width);
 
 		stayWithinBounds(array,n,100,30);
+		steerTowardsCentre(array,n);
+
+
 
 		for(int i = 0; i < n; i++){
-
+			// array[i].checkIfSpeeding();
 			array[i].setDirection();
 			array[i].updatePos();
+			// mvprintw(i,115,"x pos: %f", array[i].getDx());
 			mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
 		}
 
+		mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');
+
+		// mvprintw(0,115,"0's ID: %d",array[0].getID());
+		// mvprintw(1,115,"average x against 2: %d",getAverageX(array,n,&array[2]));
+		// mvprintw(2,115,"x of 2: %d", array[2].getDx());
+		i++;
 		move(height,width);
-		// mvprintw(1,1,"%d",i);
+		 //mvprintw(1,1,"%d",i);
 
 		// refresh();
 		ch = getch();
@@ -67,16 +74,3 @@ int main(){
 	delete[] array;
 	return 0;
 }
-
-
-// WINDOW *create_newwin(int height, int width, int starty, int startx)
-// {	WINDOW *local_win;
-
-// 	local_win = newwin(height, width, starty, startx);
-// 	box(local_win, 0 , 0);		/* 0, 0 gives default characters 
-// 					 * for the vertical and horizontal
-// 					 * lines			*/
-// 	wrefresh(local_win);		/* Show that box 		*/
-
-// 	return local_win;
-// }

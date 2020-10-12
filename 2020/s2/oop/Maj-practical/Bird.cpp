@@ -2,7 +2,7 @@
 #include "Bird.h"
 
 Bird::Bird():Object() {
-	
+	maxSpeed = 5;
 }
 
 void Bird::checkIfSpeeding(){
@@ -13,5 +13,5 @@ void Bird::checkIfSpeeding(){
 }
 
 Bird::~Bird(){
-	
+
 }
