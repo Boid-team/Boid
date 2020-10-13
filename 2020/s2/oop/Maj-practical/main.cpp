@@ -1,8 +1,14 @@
 #include <ncurses.h>
+#include <stdlib.h>
+#include <time.h>
 #include "Object.h"
+#include "Bird.h"
+#include "Functions.cpp"
+using namespace std;
 
 int main(){
 
+	srand(time(NULL));
 	// cout << "enter type of boid: " << endl;
 	// cin >> type;
 
@@ -16,21 +22,14 @@ int main(){
 	// 	}
 	// }
 	Object *array[flockNum];
-	for(int i = 0; i < flockNum; i++){
-		array[i] = new Bird();
-		array[i].setDx(0);
-		array[i].setDy(0);
-	}
 
-	// Object boid = Object();
-	// boid.setDx(1);
-	// boid.setDy(0);
-	// boid.setX(5);
-	// boid.setY(10);
-	boid.setDirection();
+
+	int height = 30;
+	int width = 100;
 
 	char ch;
-	int i = 0;
+	int frameCount = 0;
+
 	initscr();
 	halfdelay(1);
 	while(1){
@@ -38,28 +37,41 @@ int main(){
 			break;
 		}else{
 
+			clear();
+			move(0,0);
+			hline('-',width);
+			move(0,width);
+			vline('|',height);
+			move(height,0);
+			hline('-',width);
+
+			steerWithinBounds(array,flockNum,width,height);
+			steerTowardsCentre(array,flockNum,0.03);
+			avoidOtherObjects(array,flockNum,0.01);
+			matchVelocity(array,flockNum,0.01);
+
+
+
+
+
 			for(int i = 0; i < flockNum; i++){
-				updateDirection(array[i]);
-				array[i] -> updatePos();
+				array[i].setDirection(frameCount);
+				array[i].updatePos();
+				array[i].keepInBounds(width,height);
+
 				mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
 			}
 
-	
+			frameCount++;
+			move(height,width);
+
 			ch = getch();
-			clear();
 		}
 	}
 
 
 	endwin();
+
+	delete[] array;
 	return 0;
 }
-
-// void updateDirection(Object){
-	
-// 	stayWithinBounds(Object);
-// 	steerTowardsCentre(Object);
-// 	avoidOthers(Object);
-// 	matchVelocity(Object);
-
-// }

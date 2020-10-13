@@ -31,11 +31,10 @@ Bird:
 	clang++ Object.o Bird.o BirdTest.cpp -lncurses -o "BirdTest"
 
 Bird.test:
-	./BirdTest
+	bash BirdTestScript
 
 Functions:
 	clang++ Object.o Bird.o FunctionTest.cpp -lncurses -o "FunctionTest"
 
 Functions.test:
-	rm -f
 	./FunctionTest
