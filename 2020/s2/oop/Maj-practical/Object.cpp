@@ -113,10 +113,12 @@ void Object::updatePos(){
 		x = x + dx;
 		y = y + dy;
 }
-float Separation(Object *anotherObject){
+float Object::separation(Object *anotherObject){
 	float separation;
-	
+
 	separation = sqrt(pow(x-anotherObject->getX(),2) + pow(y - anotherObject -> getY(), 2));
+
+	return separation;
 }
 
 Object::~Object(){

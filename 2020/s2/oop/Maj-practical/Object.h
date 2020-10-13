@@ -39,7 +39,7 @@ public:
 
 	void updatePos();
 
-	float Separation(Object *anotherObject);
+	float separation(Object *anotherObject);
 
 	virtual ~Object();
 };

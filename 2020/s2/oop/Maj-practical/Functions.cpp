@@ -76,8 +76,26 @@ float getAverageY(Object *array, int length, Object * thing){
 }
 
 
-void avoidOtherObjects(Object *array, int length){
-	
+void avoidOtherObjects(Object *array, int length, float inFactor){
+	float minDist = 4;
+	float turnFactor = inFactor;
+
+	for(int i = 0; i < length; i++){
+		for(int j = 0; j < length; j++){
+
+			if(i != j){
+
+				if(array[i].separation(&array[j]) < minDist){
+					array[i].setDx(array[i].getDx() + ((array[j].getX() - array[i].getX()) * turnFactor)   );
+					array[i].setDy(array[i].getDy() + ((array[j].getY() - array[i].getY()) * turnFactor)   );
+
+				}
+
+			}
+
+		}
+
+	}
 }
 
 void matchVelocity(Object *array, int length, float factor){

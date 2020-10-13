@@ -10,7 +10,7 @@ int main(){
 
 	srand(time(NULL));
 
-	int n = 15;
+	int n = 25;
 
 	Object *array = new Bird[n];
 
@@ -46,7 +46,8 @@ int main(){
 
 		steerWithinBounds(array,n,width,height);
 		steerTowardsCentre(array,n,0.01);
-		matchVelocity(array,n,0.01);
+		avoidOtherObjects(array,n,0.5);
+		matchVelocity(array,n,0.03);
 
 
 		for(int i = 0; i < n; i++){//loop through object array
