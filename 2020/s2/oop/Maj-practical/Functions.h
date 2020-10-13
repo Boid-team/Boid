@@ -3,9 +3,11 @@
 
 
 
-void stayWithinBounds(Object *array, int length, int maxX, int maxY);
-void steerTowardsCentre(Object *array, int length);
+void steerWithinBounds(Object *array, int length, int maxX, int maxY);
+void steerTowardsCentre(Object *array, int length, float factor);
 float getAverageX(Object *array, int length, Object * thing);
 float getAverageY(Object *array, int length, Object * thing);
-// void avoidOthers(*Object array, int length);
-// void matchVelocity(*Object array, int length);
+void avoidOtherObjects(Object *array, int length);
+void matchVelocity(Object *array, int length, float factor);
+float getAverageSpeedX(Object *array, int length, Object *thing);
+float getAverageSpeedY(Object *array, int length, Object *thing);

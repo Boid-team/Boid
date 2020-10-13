@@ -7,11 +7,13 @@ class Bird: public Object
 {
 public:
 	Bird();
-	
+
+
+	void setDirection(int i);
 	void checkIfSpeeding();
 
 	~Bird();
-	
+
 };
 
 #endif

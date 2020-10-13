@@ -1,27 +1,31 @@
 #include <ncurses.h>
+#include <stdlib.h>
+#include <time.h>
 #include "Object.h"
 #include "Bird.h"
 #include "Functions.cpp"
-
+using namespace std;
 
 int main(){
+
+	srand(time(NULL));
 
 	int n = 15;
 
 	Object *array = new Bird[n];
 
-	for(int i = 0; i < n; i++){
-		// array[i].setX(i*5);
-		// array[i].setY(i*2);
-		array[i].setDy(1.5);
-		array[i].setDx(3);
-	}
+	// for(int i = 0; i < n; i++){
+	// 	// array[i].setX(i*5);
+	// 	// array[i].setY(i*2);
+	// 	array[i].setDy(1.5);
+	// 	array[i].setDx(3);
+	// }
 
 	char ch;
-	int i = 0;
+	int j = 0;
 
 	initscr();
-	halfdelay(2 );
+	halfdelay(2);
 
 	int height = 30;
 	int width = 100;
@@ -40,25 +44,26 @@ int main(){
 		move(height,0);
 		hline('-',width);
 
-		stayWithinBounds(array,n,100,30);
-		steerTowardsCentre(array,n);
+		steerWithinBounds(array,n,width,height);
+		steerTowardsCentre(array,n,0.01);
+		matchVelocity(array,n,0.01);
 
 
+		for(int i = 0; i < n; i++){//loop through object array
 
-		for(int i = 0; i < n; i++){
-			// array[i].checkIfSpeeding();
-			array[i].setDirection();
+			array[i].setDirection(j);
 			array[i].updatePos();
+			array[i].keepInBounds(width,height);
 			// mvprintw(i,115,"x pos: %f", array[i].getDx());
 			mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
 		}
 
-		mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');
+		mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');//draw centre of mass
 
 		// mvprintw(0,115,"0's ID: %d",array[0].getID());
 		// mvprintw(1,115,"average x against 2: %d",getAverageX(array,n,&array[2]));
 		// mvprintw(2,115,"x of 2: %d", array[2].getDx());
-		i++;
+		j++;
 		move(height,width);
 		 //mvprintw(1,1,"%d",i);
 

@@ -2,7 +2,7 @@
 #include "Functions.h"
 
 
-void stayWithinBounds(Object *array, int length, int maxX, int maxY){
+void steerWithinBounds(Object *array, int length, int maxX, int maxY){
 	float edgeLX = 15;
 	float edgeLY = 5;
 	float turnSpeed = 1;
@@ -12,19 +12,6 @@ void stayWithinBounds(Object *array, int length, int maxX, int maxY){
 	//check if the coordinates of each object is too close to the edge by edgeL units, and turn away
 	for(int i = 0; i < length; i++){
 
-		//Set hard limit on objects, any object out of bounds will have coordinates set to the edge of the bound
-		if(array[i].getX() >= maxX -1){
-			array[i].setX(maxX -1);
-		}
-		if(array[i].getX() <= 1){
-			array[i].setX(1);
-		}
-		if(array[i].getY() >= maxY -1){
-			array[i].setY(maxY -1);
-		}
-		if(array[i].getY() <= 1){
-			array[i].setY(1);
-		}
 
 		//Objects will avoid edge if they get too close
 		if(array[i].getX() <= edgeLX){
@@ -42,8 +29,10 @@ void stayWithinBounds(Object *array, int length, int maxX, int maxY){
 	}
 }
 
-void steerTowardsCentre(Object *array, int length){
-	float turnSpeedFactor = 0.005;
+
+
+void steerTowardsCentre(Object *array, int length, float factor){
+	float turnSpeedFactor = factor;
 
 	for(int i = 0; i < length; i++){
 
@@ -53,6 +42,7 @@ void steerTowardsCentre(Object *array, int length){
 
 		array[i].checkIfSpeeding();
 	}
+
 
 }
 
@@ -86,6 +76,63 @@ float getAverageY(Object *array, int length, Object * thing){
 }
 
 
-// void avoidOthers(*Object array, int length);
+void avoidOtherObjects(Object *array, int length){
+	
+}
 
-// void matchVelocity(*Object array, int length);
+void matchVelocity(Object *array, int length, float factor){
+	float turnSpeedFactor = factor;
+
+	for(int i = 0; i < length; i++){
+
+		array[i].setDx(array[i].getDx() + ((getAverageSpeedX(array,length,&array[i]) - array[i].getDx() ) * turnSpeedFactor ) );
+		array[i].setDy(array[i].getDy() + ((getAverageSpeedY(array,length,&array[i]) - array[i].getDy() ) * turnSpeedFactor ) );
+
+		array[i].checkIfSpeeding();
+	}
+}
+
+float getAverageSpeedX(Object *array, int length, Object *thing){
+	float averageDX;
+
+	for(int i = 0; i < length; i++){
+		if(array[i].getID() != thing -> getID()){
+			averageDX += array[i].getDx();
+		}
+	}
+
+	averageDX = averageDX / length -1;
+	return averageDX;
+}
+
+float getAverageSpeedY(Object *array, int length, Object *thing){
+	float averageDY;
+
+	for(int i = 0; i < length; i++){
+		if(array[i].getID() != thing -> getID()){
+			averageDY += array[i].getDy();
+		}
+	}
+
+	averageDY = averageDY / (length -1);
+	return averageDY;
+}
+
+// void keepInBounds(Object *array, int length, int maxX, int maxY){
+// 	for(int i = 0; i < length; i++){
+// 		//Set hard limit on objects, any object out of bounds will have coordinates set to the edge of the bound
+// 		if(array[i].getX() >= maxX -1){
+// 			array[i].setX(maxX -1);
+// 		}
+// 		if(array[i].getX() <= 1){
+// 			array[i].setX(1);
+// 		}
+// 		if(array[i].getY() >= maxY -1){
+// 			array[i].setY(maxY -1);
+// 		}
+// 		if(array[i].getY() <= 1){
+// 			array[i].setY(1);
+// 		}
+
+// 	}
+// }

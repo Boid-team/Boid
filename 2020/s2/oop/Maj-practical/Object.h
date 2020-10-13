@@ -28,14 +28,18 @@ public:
 	void setDx(float);
 	void setDy(float);
 
-	void setDirection();
+	virtual void setDirection(int) = 0;
 
 	virtual void checkIfSpeeding() = 0;
+
+	void keepInBounds(int maxX, int maxY);
 
 	// float distance(*Object);
 
 
 	void updatePos();
+
+	float Separation(Object *anotherObject);
 
 	virtual ~Object();
 };
