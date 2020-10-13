@@ -12,17 +12,11 @@ int main(){
 
 	int n = 25;
 
+
 	Object *array = new Bird[n];
 
-	// for(int i = 0; i < n; i++){
-	// 	// array[i].setX(i*5);
-	// 	// array[i].setY(i*2);
-	// 	array[i].setDy(1.5);
-	// 	array[i].setDx(3);
-	// }
-
 	char ch;
-	int j = 0;
+	int frameCount = 0;
 
 	initscr();
 	halfdelay(2);
@@ -45,30 +39,27 @@ int main(){
 		hline('-',width);
 
 		steerWithinBounds(array,n,width,height);
-		steerTowardsCentre(array,n,0.01);
-		avoidOtherObjects(array,n,0.5);
-		matchVelocity(array,n,0.03);
+		steerTowardsCentre(array,n,0.03);
+		avoidOtherObjects(array,n,0.01);
+		matchVelocity(array,n,0.01);
 
 
 		for(int i = 0; i < n; i++){//loop through object array
 
-			array[i].setDirection(j);
+			array[i].setDirection(frameCount);
 			array[i].updatePos();
 			array[i].keepInBounds(width,height);
-			// mvprintw(i,115,"x pos: %f", array[i].getDx());
+
 			mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
 		}
 
-		mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');//draw centre of mass
+		// mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');//draw centre of mass
 
-		// mvprintw(0,115,"0's ID: %d",array[0].getID());
-		// mvprintw(1,115,"average x against 2: %d",getAverageX(array,n,&array[2]));
-		// mvprintw(2,115,"x of 2: %d", array[2].getDx());
-		j++;
+		frameCount++;
 		move(height,width);
-		 //mvprintw(1,1,"%d",i);
 
-		// refresh();
+
+
 		ch = getch();
 
 		}
