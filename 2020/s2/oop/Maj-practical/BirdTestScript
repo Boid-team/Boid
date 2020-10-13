@@ -1,0 +1,4 @@
+echo test 01: 1, 2, 3, 4
+./BirdTest < BirdTestIn01.txt
+echo test 02: 0.1, 0, -5.9, 20000
+./BirdTest < BirdTestIn02.txt
