@@ -21,7 +21,10 @@ int main(){
 	// 		Boid array = new Boid();
 	// 	}
 	// }
-	Object *array[flockNum];
+	
+	int flockNum = 20;
+	
+	Object *array = new Bird[flockNum];
 
 
 	int height = 30;

@@ -1,7 +1,7 @@
 make:
 
 main: Object.o main.cpp
-	clang++ Object.o main.cpp -lncurses -o "main"
+	clang++ Object.o Bird.o Fish.o main.cpp -lncurses -o "main"
 
 main.test:
 	./main
@@ -43,4 +43,4 @@ SubFunctions:
 	clang++ Object.o Bird.o SubFunctionsTest.cpp -o "SubFunctionTest"
 
 SubFunctions.test:
-	./SubFunctionTest
+	bash SubFunctionTestScript
