@@ -53,7 +53,7 @@ int main(){
 			mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
 		}
 
-		// mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');//draw centre of mass
+		mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');//draw centre of mass
 
 		frameCount++;
 		move(height,width);

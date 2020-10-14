@@ -38,3 +38,9 @@ Functions:
 
 Functions.test:
 	./FunctionTest
+
+SubFunctions:
+	clang++ Object.o Bird.o SubFunctionsTest.cpp -o "SubFunctionTest"
+
+SubFunctions.test:
+	./SubFunctionTest

@@ -1,0 +1,4 @@
+echo Test 01: x: 1 y: 5 dx: -9 dy: 0.5
+./SubFunctionTest < SubFunctionIn01.txt
+echo Test 02: x: 0 y: 999999 dx: 0.0000005 dy: -999999
+./SubFunctionTest < SubFunctionIn02.txt

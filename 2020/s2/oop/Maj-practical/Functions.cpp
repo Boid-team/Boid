@@ -47,7 +47,7 @@ void steerTowardsCentre(Object *array, int length, float factor){
 }
 
 float getAverageX(Object * array, int length, Object * thing){
-	float centreX;
+	float centreX = 0;
 
 	for(int i = 0; i < length; i++){//iterate over object array, add each object x pos to centreX if its not the input object
 
@@ -62,7 +62,7 @@ float getAverageX(Object * array, int length, Object * thing){
 }
 
 float getAverageY(Object *array, int length, Object * thing){
-	float centreY;
+	float centreY = 0;
 
 	for(int i = 0; i < length; i++){//iterate over object array, add each object Y pos to centreY if its not the input object
 
@@ -111,7 +111,7 @@ void matchVelocity(Object *array, int length, float factor){
 }
 
 float getAverageSpeedX(Object *array, int length, Object *thing){
-	float averageDX;
+	float averageDX = 0;
 
 	for(int i = 0; i < length; i++){
 		if(array[i].getID() != thing -> getID()){
@@ -119,12 +119,12 @@ float getAverageSpeedX(Object *array, int length, Object *thing){
 		}
 	}
 
-	averageDX = averageDX / length -1;
+	averageDX = averageDX / (length -1);
 	return averageDX;
 }
 
 float getAverageSpeedY(Object *array, int length, Object *thing){
-	float averageDY;
+	float averageDY = 0;
 
 	for(int i = 0; i < length; i++){
 		if(array[i].getID() != thing -> getID()){
