@@ -13,8 +13,8 @@ Object::Object(){
 
 	x = rand() % 24;
 	y = rand() % 24;
-	dx = rand() % 5;
-	dy = rand() % 5;
+	dx = (rand() % 10) - 5;
+	dy = (rand() % 10) - 5;
 
 	objID = id++;
 }

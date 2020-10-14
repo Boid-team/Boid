@@ -6,10 +6,19 @@ Bird::Bird():Object() {
 }
 
 void Bird::setDirection(int i){
-	if(i % 4 <2){
-		direction = 'v';
+
+	if(objID % 2 == 0){
+		if(i % 4 <2){
+			direction = 'v';
+		}else{
+			direction = '^';
+		}
 	}else{
-		direction = '^';
+	if(i % 4 <2){
+			direction = '^';
+		}else{
+			direction = 'v';
+		}
 	}
 }
 
