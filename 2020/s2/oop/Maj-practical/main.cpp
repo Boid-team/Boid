@@ -21,9 +21,9 @@ int main(){
 	// 		Boid array = new Boid();
 	// 	}
 	// }
-	
+
 	int flockNum = 20;
-	
+
 	Object *array = new Bird[flockNum];
 
 
