@@ -12,7 +12,7 @@ bool isNumeric(string str);
 
 int main(){
 
-	int n;
+	int flockNum;
 	int count = 0;
 	string type;
 	string str;
@@ -26,10 +26,10 @@ int main(){
 			do{
 
 					cout << "Enter the number of Birds to fly: " << endl;
-					cin >> n;
+					cin >> flockNum;
 
 					stringstream ss;
-					ss << n;
+					ss << flockNum;
 					ss >> str;
 
 					if (isNumeric(str)){
@@ -39,18 +39,12 @@ int main(){
 					    cout << "" << endl;
 					}
 
-					if(n > 0 && count == 2){
-						Object *array = new Bird[n];
+					if(flockNum > 0 && count == 2){
+						Object *array = new Bird[flockNum];
 
-						for(int i = 0; i < n; i++){
-							// array[i].setX(i*5);
-							// array[i].setY(i*2);
-							array[i].setDy(1.5);
-							array[i].setDx(3);
-						}
 
 						char ch;
-						int i = 0;
+						int frameCount = 0;
 
 						initscr();
 						halfdelay(2 );
@@ -72,23 +66,25 @@ int main(){
 							move(height,0);
 							hline('-',width);
 
-							stayWithinBounds(array,n,100,30);
-							steerTowardsCentre(array,n);
+							steerWithinBounds(array,flockNum,width,height);
+							steerTowardsCentre(array,flockNum,0.03);
+							avoidOtherObjects(array,flockNum,0.01);
+							matchVelocity(array,flockNum,0.01);
 
-							for(int i = 0; i < n; i++){
-								// array[i].checkIfSpeeding();
-								array[i].setDirection();
-								array[i].updatePos();
-								// mvprintw(i,115,"x pos: %f", array[i].getDx());
-								mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
-							}
+							for(int i = 0; i < flockNum; i++){
+							array[i].setDirection(frameCount);
+							array[i].updatePos();
+							array[i].keepInBounds(width,height);
 
-							mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');
+							mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
+						}
+
+							// mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');
 
 							// mvprintw(0,115,"0's ID: %d",array[0].getID());
 							// mvprintw(1,115,"average x against 2: %d",getAverageX(array,n,&array[2]));
 							// mvprintw(2,115,"x of 2: %d", array[2].getDx());
-							i++;
+							frameCount++;
 							move(height,width);
 							 //mvprintw(1,1,"%d",i);
 
@@ -106,7 +102,7 @@ int main(){
 						cout << "Try again!!! " << endl;
 					}
 
-				}while(n < 0 || count != 2);
+				}while(flockNum < 0 || count != 2);//TODO
 
 		}else if(type == "Fish" || type == "fish"){
 			cout << "You entered Fish" << endl;

@@ -1,13 +1,7 @@
 #include "Object.h"
 #include "Fish.h"
 
-Fish::Fish(int maxY, int maxX):Object(){
-	maxSpeedX = maxX;
-	maxSpeedY = maxY;
-		// x = rand() % 24;
-		// y = rand() % 24;
-		// dx = rand() % 5;
-		// dy = rand() % 5;
+Fish::Fish():Object(){
 }
 
 float Fish::getMaxSpeedX(){
@@ -25,6 +19,24 @@ void Fish::checkIfSpeeding(){
 	if(dx > maxSpeedX){
 		dx = maxSpeedX;
 	}
+}
+
+void Fish::setDirection(int i){
+	if(dx < 0){
+		direction = '<';
+	}else if(dx > 0){
+		direction = '>';
+	}else{
+		direction = '.';
+	}
+}
+
+void Fish::setMaxX(float maxX){
+	maxSpeedX = maxX;
+}
+
+void Fish::setMaxY(float maxY){
+	maxSpeedY = maxY;
 }
 
 Fish::~Fish(){
