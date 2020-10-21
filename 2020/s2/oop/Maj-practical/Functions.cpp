@@ -1,5 +1,10 @@
 #include "Object.h"
 #include "Functions.h"
+#include <string>
+#include <stdlib.h>
+#include <time.h>
+#include <iostream>
+using namespace std;
 
 
 void steerWithinBounds(Object *array, int length, int maxX, int maxY){
@@ -86,8 +91,8 @@ void avoidOtherObjects(Object *array, int length, float inFactor){
 			if(i != j){
 
 				if(array[i].separation(&array[j]) < minDist){
-					array[i].setDx(array[i].getDx() + ((array[j].getX() - array[i].getX()) * turnFactor)   );
-					array[i].setDy(array[i].getDy() + ((array[j].getY() - array[i].getY()) * turnFactor)   );
+					array[i].setDx(array[i].getDx() + ((array[j].getX() - array[i].getX()) * turnFactor * -1)   );
+					array[i].setDy(array[i].getDy() + ((array[j].getY() - array[i].getY()) * turnFactor * -1)   );
 
 				}
 
@@ -103,8 +108,8 @@ void matchVelocity(Object *array, int length, float factor){
 
 	for(int i = 0; i < length; i++){
 
-		array[i].setDx(array[i].getDx() + ((getAverageSpeedX(array,length,&array[i]) - array[i].getDx() ) * turnSpeedFactor ) );
-		array[i].setDy(array[i].getDy() + ((getAverageSpeedY(array,length,&array[i]) - array[i].getDy() ) * turnSpeedFactor ) );
+		array[i].setDx(array[i].getDx() + ((getAverageSpeedX(array,length,&array[i]) - array[i].getDx() ) * turnSpeedFactor) );
+		array[i].setDy(array[i].getDy() + ((getAverageSpeedY(array,length,&array[i]) - array[i].getDy() ) * turnSpeedFactor) );
 
 		array[i].checkIfSpeeding();
 	}
@@ -136,21 +141,39 @@ float getAverageSpeedY(Object *array, int length, Object *thing){
 	return averageDY;
 }
 
-// void keepInBounds(Object *array, int length, int maxX, int maxY){
-// 	for(int i = 0; i < length; i++){
-// 		//Set hard limit on objects, any object out of bounds will have coordinates set to the edge of the bound
-// 		if(array[i].getX() >= maxX -1){
-// 			array[i].setX(maxX -1);
-// 		}
-// 		if(array[i].getX() <= 1){
-// 			array[i].setX(1);
-// 		}
-// 		if(array[i].getY() >= maxY -1){
-// 			array[i].setY(maxY -1);
-// 		}
-// 		if(array[i].getY() <= 1){
-// 			array[i].setY(1);
-// 		}
+void restartBoids(Object *array, int length){
+	for(int i = 0; i < length; i++){
+		array[i].setX(rand() % 24);
+		array[i].setY(rand() % 24);
+		array[i].setDx((rand() % 10) - 5);
+		array[i].setDy((rand() % 10) - 5);
+	}
+}
 
+
+// bool isNumeric(string str){
+
+// 	int strCount = 0;
+
+// 	//check if negative number
+// 	if(str[0] == '-'){
+// 		strCount = 1;
+// 		for(int i = 1; i < str.length(); i++){
+// 			if (isdigit(str[i]) == true){
+//     			strCount++;
+//     		}
+// 		}
 // 	}
+
+// 	if(strCount == str.length()){
+// 		return true;
+// 	}
+
+
+// 	for (int i = 0; i < str.length(); i++){
+//       if (isdigit(str[i]) == false){
+//     	return false; //when one non numeric value is found, return false
+//       }
+//   }
+//   return true;
 // }

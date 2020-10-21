@@ -4,13 +4,7 @@
 Fish::Fish():Object(){
 }
 
-float Fish::getMaxSpeedX(){
-	return maxSpeedX;
-}
 
-float Fish::getMaxSpeedY(){
-	return maxSpeedY;
-}
 
 void Fish::checkIfSpeeding(){
 	if(dy > maxSpeedY){
@@ -29,14 +23,6 @@ void Fish::setDirection(int i){
 	}else{
 		direction = '.';
 	}
-}
-
-void Fish::setMaxX(float maxX){
-	maxSpeedX = maxX;
-}
-
-void Fish::setMaxY(float maxY){
-	maxSpeedY = maxY;
 }
 
 Fish::~Fish(){

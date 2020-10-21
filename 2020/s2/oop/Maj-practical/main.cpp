@@ -1,126 +1,200 @@
 
 #include <sstream>
 #include <ncurses.h>
-#include "Object.h"
-#include "Bird.h"
-#include "Functions.cpp"
 #include <string>
 #include <iostream>
+#include "Object.h"
+#include "Bird.h"
+#include "Fish.h"
+#include "Functions.cpp"
+
 
 using namespace std;
-bool isNumeric(string str);
+
 
 int main(){
 
 	int flockNum;
-	int count = 0;
+	int count = 0;//status of program
 	string type;
-	string str;
+	string inputNum;
 
+	Object ** array = new Object*[1];
+
+
+	//Begin user input
 	do{
-		cout << "Enter the type of Boid: (Birds / Fish): " << endl;
+        type = " ";
+		cout << "Enter the type of Boid: (Bird / Fish): " << endl;
 		cin >> type;
 
-		if(type == "Birds" || type == "birds"){
+		if(type == "Bird" || type == "bird"){
 
 			do{
+					count = 0;
+					cout << "Enter the number of Birds: " << endl;
+					cin >> inputNum;
 
-					cout << "Enter the number of Birds to fly: " << endl;
-					cin >> flockNum;
-
-					stringstream ss;
-					ss << flockNum;
-					ss >> str;
-
-					if (isNumeric(str)){
-						count = 2;
-				   }
-					 else{
-					    cout << "" << endl;
-					}
+					//convert input number string into int. If stoi() throws an exception, catch and print error message.
+					//If successful, check for illegal numbers, and change status of program if everything is fine
+					try{
+                        flockNum = stoi(inputNum);
+                        if(flockNum <= 0){
+                            cout << "Illegal number of birds!" << endl;
+                        }else{
+                            count = 2;
+                        }
+                    }catch(invalid_argument& e){
+                        cout << "Invalid number." << endl;
+                    }
 
 					if(flockNum > 0 && count == 2){
-						Object *array = new Bird[flockNum];
 
+						array[0] = new Bird[flockNum];
 
-						char ch;
-						int frameCount = 0;
-
-						initscr();
-						halfdelay(2 );
-
-						int height = 30;
-						int width = 100;
-
-
-						while(1){
-							if(ch == 'q' | ch == 'Q'){
-								break;
-							}else{
-
-							clear();
-							move(0,0);
-							hline('-',width);
-							move(0,width);
-							vline('|',height);
-							move(height,0);
-							hline('-',width);
-
-							steerWithinBounds(array,flockNum,width,height);
-							steerTowardsCentre(array,flockNum,0.03);
-							avoidOtherObjects(array,flockNum,0.01);
-							matchVelocity(array,flockNum,0.01);
-
-							for(int i = 0; i < flockNum; i++){
-							array[i].setDirection(frameCount);
-							array[i].updatePos();
-							array[i].keepInBounds(width,height);
-
-							mvaddch(array[i].getY(), array[i].getX(), array[i].getDirection());
-						}
-
-							// mvaddch(getAverageY(array,n,&array[1]), getAverageX(array,n,&array[1]),'o');
-
-							// mvprintw(0,115,"0's ID: %d",array[0].getID());
-							// mvprintw(1,115,"average x against 2: %d",getAverageX(array,n,&array[2]));
-							// mvprintw(2,115,"x of 2: %d", array[2].getDx());
-							frameCount++;
-							move(height,width);
-							 //mvprintw(1,1,"%d",i);
-
-							// refresh();
-							ch = getch();
-
-							}
-						}
-
-						endwin();
-						delete[] array;
 
 					}else{
-						cout << "The number you have entered is less than 0:Enter a " << endl;
+						cout << "Try again!!! " << endl;
+					}
+				}while(flockNum < 0 || count != 2);
+
+		}else if(type == "Fish" || type == "fish"){
+			do{
+					count = 0;
+					cout << "Enter the number of Fish: " << endl;
+					cin >> inputNum;
+
+					//convert input number string into int. If stoi() throws an exception, catch and print error message.
+					//If successful, check for illegal numbers, and change status of program if everything is fine
+                    try{
+                        flockNum = stoi(inputNum);
+                        if(flockNum <= 0){
+                            cout << "Illegal number of fish!" << endl;
+                        }else{
+                            count = 2;
+                        }
+                    }catch(invalid_argument& e){
+                        cout << "Invalid number." << endl;
+                    }
+
+
+					if(flockNum > 0 && count == 2){
+
+                        array[0] = new Fish[flockNum];
+                        for(int i = 0; i < flockNum; i++){
+                        	array[0][i].setMaxX(4);
+                        	array[0][i].setMaxY(2);
+                        }
+
+
+
+					}else{
 						cout << "Try again!!! " << endl;
 					}
 
-				}while(flockNum < 0 || count != 2);//TODO
-
-		}else if(type == "Fish" || type == "fish"){
-			cout << "You entered Fish" << endl;
+				}while(flockNum <= 0 || count != 2);
 
 		}else{
 			cout << "Wrong input!!! TRY AGAIN!!!" << endl;
 		}
 
 	}while(type != "Fish" && type != "fish" && type != "Bird" && type != "bird");
+	//end user input
+
+	char ch;
+	int frameCount = 0;
+	int height = 30;
+	int width = 100;
+
+	initscr();
+	halfdelay(2);
 
 
-return 0;
+
+	float centeringSteerFactor = 0.03;
+	float avoidSteerFactor = 0.01;
+	float aligningSteerFactor = 0.01;
+
+	while(1){
+		if(ch == 'q' | ch == 'Q'){
+			break;
+		}if(ch == 'w' | ch == 'e' | ch == 'r' | ch == 's' | ch =='d' | ch == 'f' | ch == 'p'){//Increase/decrease factors or restart simulation
+			switch(ch){
+				case 'w':
+					centeringSteerFactor += 0.01;
+					break;
+				case 's':
+					centeringSteerFactor -= 0.01;
+					break;
+				case 'e':
+					avoidSteerFactor += 0.01;
+					break;
+				case 'd':
+					avoidSteerFactor -= 0.01;
+					break;
+				case 'r':
+					aligningSteerFactor += 0.01;
+					break;
+				case 'f':
+					aligningSteerFactor -= 0.01;
+					break;
+				case 'p':
+					restartBoids(array[0],flockNum);
+					break;
+			}
+			ch = '.';
+		}else{
+		//draw frame of boid screen
+		clear();
+		move(0,0);
+		hline('-',width);
+		move(0,width);
+		vline('|',height);
+		move(height,0);
+		hline('-',width);
+
+		//run rule set
+		steerWithinBounds(array[0],flockNum,width,height);
+		steerTowardsCentre(array[0],flockNum,centeringSteerFactor);
+		avoidOtherObjects(array[0],flockNum,avoidSteerFactor);
+		matchVelocity(array[0],flockNum,aligningSteerFactor);
+
+
+		for(int i = 0; i < flockNum; i++){
+			//final boid updates to postion and sprite
+			array[0][i].setDirection(frameCount);
+			array[0][i].updatePos();
+			array[0][i].keepInBounds(width,height);
+
+			//draw each boid
+			mvaddch(array[0][i].getY(), array[0][i].getX(), array[0][i].getDirection());
+		}
+
+		//print instructions
+		mvprintw(0,130,"Instructions:");
+		mvprintw(1,130, "Increase/Decrease centering factor with w/s");
+		mvprintw(2, 130, "Current factor: %0.2f", centeringSteerFactor);
+		mvprintw(4, 130, "Increase/Decrease avoiding factor with e/d");
+		mvprintw(5,130,"Current factor: %0.2f", avoidSteerFactor);
+		mvprintw(7,130,"Increase/Decrease velocity matching factor with r/f");
+		mvprintw(8,130,"Current factor: %0.2f", aligningSteerFactor);
+		mvprintw(10,130,"Restart simulation with p");
+		mvprintw(11,130,"Quit simulation with q");
+
+		//cleanup of screen
+		frameCount++;
+		move(height,width);
+
+		ch = getch();
+
+		}
+	}
+	//program cleanup
+	endwin();
+	delete[] array[0];
+	delete[] array;
+
+	return 0;
 }
 
-bool isNumeric(string str){
 
-   for (int i = 0; i < str.length(); i++)
-      if (isdigit(str[i]) == false)
-      return false; //when one non numeric value is found, return false
-   return true;
-}

@@ -10,6 +10,11 @@ public:
 
 
 	void setDirection(int i);
+
+	void setMaxX(float);
+	void setMaxY(float);
+	float getMaxSpeedX();
+	float getMaxSpeedY();
 	void checkIfSpeeding();
 
 	~Bird();

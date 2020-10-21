@@ -2,6 +2,8 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string>
+#include <sstream>
 #include "Object.h"
 #include "Bird.h"
 #include "Functions.cpp"
@@ -48,7 +50,6 @@ int main(){
     dxAvg = getAverageSpeedX(array,5,&array[0]);
     dyAvg = getAverageSpeedY(array,5,&array[0]);
 
-     cout << "Bird array has average x: " << xAvg << " average y: " << yAvg << " average dx: " << dxAvg << " average dy: " << dyAvg << endl;
-
+    cout << "Bird array has average x: " << xAvg << " average y: " << yAvg << " average dx: " << dxAvg << " average dy: " << dyAvg << endl;
 
 }

@@ -4,8 +4,6 @@
 #include "Object.h"
 using namespace std;
 
-#define PI 3.14159265
-
 using namespace std;
 
 Object::Object(){
@@ -67,27 +65,26 @@ void Object::setDy(float inDy){
 	dy = inDy;
 }
 
-void Object::setDirection(int i){
-		// if(dx != 0){
+void Object::setMaxX(float maxX){
+	maxSpeedX = maxX;
+}
 
-		// 	if(atan(dy/dx) * 180 / PI >= 45 | atan(dy/dx) * 180 / PI < 135){
-		// 		direction = 'v';
-		// 	}else if(atan(dy/dx) * 180 / PI < 45 | atan(dy/dx) * 180 / PI >= 315){
-		// 		direction = '>';
-		// 	}else if(atan(dy/dx) * 180 / PI < 315 | atan(dy/dx) * 180 / PI >= 225){
-		// 		direction = '^';
-		// 	}else if(atan(dy/dx) * 180 / PI >= 135 | atan(dy/dx) * 180 / PI < 225){
-		// 		direction = '<';
-		// 	}
-		// }else{
-		// 	if(dy < 0){
-		// 		direction = '^';
-		// 	}else if(dy > 0){
-		// 		direction = 'v';
-		// 	}else if(dy == 0){
-		// 		direction = '.';
-		// 	}
-		// }
+void Object::setMaxY(float maxY){
+	maxSpeedY = maxY;
+}
+
+
+float Object::getMaxSpeedX(){
+	return maxSpeedX;
+}
+
+float Object::getMaxSpeedY(){
+	return maxSpeedY;
+}
+
+
+void Object::setDirection(int i){
+
 }
 
 void Object::checkIfSpeeding(){
