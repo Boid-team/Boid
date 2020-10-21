@@ -1,0 +1,6 @@
+echo Input test 01: Bird, 20
+./InputTest < InputTestIn01.txt
+echo Input test 02: Bird, twenty, Bird, 20
+./InputTest < InputTestIn02.txt
+echo Input test 03: Feesh, Fish, -10, 10
+./InputTest < InputTestIn03.txt

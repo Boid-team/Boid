@@ -1,0 +1,4 @@
+echo test 01: -1,900,-150,600, 15
+./FishTest < FishTestIn01.txt
+echo test 02: 0.0005,-800,-0.0004,9999,900
+./FishTest < FishTestIn02.txt
