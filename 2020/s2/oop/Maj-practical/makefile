@@ -6,14 +6,11 @@ main: Object.o Bird.o Fish.o main.cpp
 main.test: main
 	./main
 
+testing: Fish.test Bird.test SubFunctions.test InputTest.test
+
 Object.o: Object.h Object.cpp
 	clang++ -c Object.h Object.cpp
 
-Object: Object.o testingObject.cpp
-	clang++ Object.o testingObject.cpp -lncurses -o "Objtest"
-
-Object.test: Object.o Object
-	./Objtest
 
 Fish.o: Object.cpp Fish.cpp
 	clang++ -c Object.cpp Fish.cpp
@@ -42,7 +39,7 @@ Functions.test:
 SubFunctions: SubFunctionsTest.cpp
 	clang++ Object.o Bird.o SubFunctionsTest.cpp -o "SubFunctionTest"
 
-SubFunctions.test:
+SubFunctions.test: SubFunctions
 	bash SubFunctionTestScript
 
 PointerTest: Object.o Fish.o Bird.o FunctionTest.cpp

@@ -116,7 +116,7 @@ int main(){
 	float aligningSteerFactor = 0.01;
 
 	while(1){
-		if(ch == 'q' | ch == 'Q'){
+		if(ch == 'q' | ch == 'Q'){//quit program
 			break;
 		}if(ch == 'w' | ch == 'e' | ch == 'r' | ch == 's' | ch =='d' | ch == 'f' | ch == 'p'){//Increase/decrease factors or restart simulation
 			switch(ch){
