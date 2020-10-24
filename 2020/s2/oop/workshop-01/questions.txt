@@ -1,4 +1,0 @@
-1) To keep track of what changes have been made in the commit so we can be reminded of our progress
-2) Short and concise, with enough information to remind yourself what changes were made and the progress that has been made.
-3) Consistently throughout the development process, at least once at the end of each session, and at least once during the session as a way to save our work.
-4) True. The SVN should serve as the main storage location for the project so all relevant files should be committed.
